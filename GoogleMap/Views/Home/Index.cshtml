@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewBag.Title = "Hackaton";
 }
 <style>
@@ -39,12 +39,66 @@
             </nav>
         </div>
     </div>
-    <div class="row">
-       
-        <div  id="map">
+ 
 
+    <div class="row">
+        <div class="col-md-4">
+            <h2>  Áreas Naturales Protegidas del Perú </h2>
+            <span >  Gracias al Sernamp podemos acceder a estas áreas y disfrutar de las flora y fauna de estas, simplemente genial Conoce donde quedan
+                ¿Cuales te gustaría visitar?</span>
+            <table class="table">
+               
+                    <tr>
+                        <th>Orden</th>
+                        <th>Reserva</th>
+                        <th>Ver</th>
+                    </tr>
+
+                @foreach (var item in ViewBag.ListOfDropdown)
+                {
+                     <tr>
+                    <td>@item.Id</td>
+                         <td>@item.Address</td>
+                         <td>
+
+                             <a href="javascript:void(0);" ><i class="fa fa-mail-reply"></i></a>
+                             @using (Html.BeginForm("GetAllLocationById", "Home", new { Id = @item.Id }))
+                             {
+                                 <a href="javascript:;" onclick="GoLocation(@item.Id);">Ubicación</a>
+
+
+                             }
+
+
+            </td>
+
+                </tr>
+                    
+                    
+                }
+
+               
+
+
+
+
+               
+
+
+                
+                    
+<tr></tr>
+
+</table>
+            
+</div>
+        <div class="col-md-8">
+            <div id="map">
+
+            </div>
         </div>
     </div>
+
 </div>
 
 
